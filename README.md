@@ -24,16 +24,74 @@ Instalation
 
 Usage case on mocha test example:
 ```js
-  var Neck = require('neck'),
-      head = Neck.head('ios'); // picks up an ios head ( iPad, iPhone, or other iDevice like connected to Neck )
-  
-  head.open( 'https://www.findhit.com/' )
-    .then(function () {
-      return head.navigate( '/auth/login' );
-    })
-    .then(function () {
-      expect( head.document.path ).to.be.equal( '/auth/login' );
+  var Util = require('findhit-util'),
+      Neck = require('neck');
+
+  describe( "my browser tests", function () {
+
+    before( function ( done ) {
+
+      // Get all available heads
+      Neck.getHeads()
+        .then(function ( heads ) {
+
+          // We got browser, but lets check
+          if ( Util.hasnt( 'Browser', heads ) ) {
+            throw new Error("No browser head?");
+          }
+
+          return heads.Browser;
+        })
+        .then(function ( Browser ) {
+        
+          // We just want to run into an iPhone, so lets search for an iPhone head
+          return Browser.searchInstance( 'iPhone' )
+        
+        })
+        .then(function ( browserInstances ) {
+         
+          if( ! browserInstances || ! browserInstances.length ) {
+            throw new Error("there aren't iPhone instances available :(");
+          }
+
+          return Util.Array( browserInstances ).get( 'random' ); // It could be index, 'first' or 'last'
+        })
+        .then(function ( browser ) {
+        
+          return browser.open( 'https://www.findhit.com/' );
+        
+        })
+        .then(function ( browser ) {
+        
+          expect( browser.title ).to.be.equal( 'findhit' );
+
+          return browser.eval( 'injectSomeVariable = "YOLO Fag, code faster";' );
+        
+        })
+        .then(function ( browser ) {
+        
+          return browser.input('#login', 'username');
+        
+        })
+        .then(function ( browser ) {
+        
+          return browser.input('#pass', 'my precious');
+        
+        })
+        .then(function ( browser ) {
+        
+          return browser.submit('#login_form');
+        
+        })
+        .then(function ( browser ) {
+        
+          expect( browser.title ).to.be.equal( 'My Network' );
+        
+        })
+        .done( done );
+
     });
+
 ```
 
 Developing Stage
