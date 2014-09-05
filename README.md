@@ -15,21 +15,33 @@ We have:
 Instalation
 -----------
 
+### Step 1: Start a Neck server
+
 ```bash
   npm install --save neck;
   
   # start Neck server
-  neck serve;
+  neck serve --port=5000;
+
+  # Neck is now running on http://localhost:5000
 ```
 
-Usage case on mocha test example:
+### Step 2: Connect some devices into http://neck.server.ip.address:5000
+
+You can connect browsers on tablets, phones, computers, virtual machines, etc.
+
+### Step 3: Run tests!!!
+
+This is just a POC wrote to show how easy is to target a platform or app.
+
 ```js
-  var Util = require('findhit-util'),
-      Neck = require('neck');
+  var Util = require( 'findhit-util' ),
+      Neck = require( 'neck' );
 
   describe( "my browser tests", function () {
 
     before( function ( done ) {
+      var self = this;
 
       // Get all available heads
       Neck.getHeads()
@@ -43,54 +55,102 @@ Usage case on mocha test example:
           return heads.Browser;
         })
         .then(function ( Browser ) {
-        
-          // We just want to run into an iPhone, so lets search for an iPhone head
-          return Browser.searchInstance( 'iPhone' )
-        
-        })
-        .then(function ( browserInstances ) {
-         
-          if( ! browserInstances || ! browserInstances.length ) {
-            throw new Error("there aren't iPhone instances available :(");
-          }
 
-          return Util.Array( browserInstances ).get( 'random' ); // It could be index, 'first' or 'last'
-        })
-        .then(function ( browser ) {
-        
-          return browser.open( 'https://www.findhit.com/' );
-        
-        })
-        .then(function ( browser ) {
-        
-          expect( browser.title ).to.be.equal( 'findhit' );
+          self.Browser = Browser;
 
-          return browser.eval( 'injectSomeVariable = "YOLO Fag, code faster";' );
-        
+          return Browser.getAll();
+
         })
-        .then(function ( browser ) {
-        
-          return browser.input('#login', 'username');
-        
-        })
-        .then(function ( browser ) {
-        
-          return browser.input('#pass', 'my precious');
-        
-        })
-        .then(function ( browser ) {
-        
-          return browser.submit('#login_form');
-        
-        })
-        .then(function ( browser ) {
-        
-          expect( browser.title ).to.be.equal( 'My Network' );
-        
+        .then(function ( browsers ) {
+          self.browsers = browsers;
         })
         .done( done );
 
     });
+
+    describe( 'iPhone', function () {
+
+      before( function ( done ) {
+        var self = this;
+
+        this.Browser.getBy({
+
+          // All variables above are optional, if none is specified, it will result same as `.getAll()`
+
+          platform: 'iOS', // 'Windows', 'Mac OS', 'Android', ..., undefined
+          device: 'iPhone', // 'Samsung', 'HTC', ..., undefined
+          engine: 'webkit', // 'gecko', ..., undefined
+          app: 'Chrome', // 'Firefox', 'Safari', ..., undefined
+
+        })
+          .then(function ( browsers ) {
+
+            if( ! browsers || ! browsers.length ) {
+              throw new Error("there aren't iPhone instances available :(");
+            }
+
+            return Util.Array( browsers ).get( 'random' ); // It could be index, 'first' or 'last'
+    
+          })
+          .then(function ( iPhone ) {
+
+            this.iPhone = iPhone;
+
+          })
+          .done( done );
+
+      });
+
+      it( "login", function ( done ) {
+
+        this.iPhone.open( 'https://www.findhit.com/' )
+          .then(function ( tab ) {
+          
+            expect( tab.title ).to.be.equal( 'findhit' );
+
+            return tab.eval( 'injectSomeVariable = "YOLO Fag, code faster";' );
+          
+          })
+          .then(function ( tab ) {
+          
+            return tab.input('#login', 'username');
+          
+          })
+          .then(function ( tab ) {
+          
+            return tab.input('#pass', 'my precious');
+          
+          })
+          .then(function ( tab ) {
+          
+            return tab.submit('#login_form');
+          
+          })
+          .then(function ( tab ) {
+          
+            expect( tab.title ).to.be.equal( 'My Network' );
+          
+          })
+          .done( done );
+
+      });
+
+      it( "login", function ( done ) {
+
+        this.iPhone.open( 'https://www.findhit.com/about' )
+          .then(function ( tab ) {
+
+            // Another test, just to POC
+
+          })
+          .done( done );
+
+      });
+
+
+    });
+
+  });
 
 ```
 
