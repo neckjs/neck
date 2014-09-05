@@ -1,0 +1,55 @@
+{
+  "name": "neck",
+  "description": "A multi-browser test tool that fills the gap between headless and head-only browser-driven tests",
+  "version": "0.0.1",
+  "author": "José Moreira <jose.moreira@findhit.com>",
+  "contributors": [
+    {
+      "name": "José Moreira",
+      "email": "jose.moreira@findhit.com"
+    },
+    {
+      "name": "Bruno Casanova",
+      "email": "bruno.casanova@findhit.com"
+    },
+    {
+      "name": "Gabriel Conceição",
+      "email": "gabriel.conceicao@findhit.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neckjs/neck.git"
+  },
+  "bugs": {
+    "url": "https://github.com/neckjs/neck/issues"
+  },
+  "dependencies": {
+    "neck-head": "^0.0.1",
+    "neck-head-browser": "^0.0.1",
+    "neck-server": "^0.0.1",
+    "neck-cli": "^0.0.1"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.21.3",
+    "sinon": "^1.10.3"
+  },
+  "keywords": [
+    "tool",
+    "browser",
+    "multi-browser",
+    "test",
+    "tests",
+    "neck",
+    "findhit"
+  ],
+  "main": "index",
+  "scripts": {
+    "test": "node node_modules/mocha/bin/mocha --globals setImmediate,clearImmediate --check-leaks --colors -t 10000 --reporter spec $(find tests/* -name '*.test.js')"
+  },
+  "engines": {
+    "node": ">=0.8"
+  },
+  "license": "GPL v3"
+}
