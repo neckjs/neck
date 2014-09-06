@@ -15,7 +15,7 @@ We have:
 Instalation
 -----------
 
-### Step 1: Start a Neck server
+##### Step 1: Start a Neck server
 
 ```bash
 	npm install --save neck;
@@ -26,22 +26,24 @@ Instalation
 	# Neck is now running on http://localhost:5000
 ```
 
-### Step 2: Connect some devices
+##### Step 2: Connect some devices
 
 Access from a browser to: http://neck.server.ip.address:5000
 
 You can connect browsers running on tablets, phones, computers, virtual machines, etc.
 We expect to be compatible with all of them (even IE 6, we hope!!)
 
-### Step 3: Run tests!
+##### Step 3: Run tests!
 
 See [API](./API.md) and [EXAMPLES](./EXAMPLES.md) for further implement information.
 
 Developing Stage
 ----------------
+
 Developing our first pre-release
 
 Ownership
 ---------
 
-neckjs is an open-source project started and owned by [findhit](https://www.findhit.com/)
+**Neck** is an open-source project started and owned by [findhit](https://www.findhit.com/).
+Give a peek at [findhit's github page](http://findhit.github.io/) for more projects.

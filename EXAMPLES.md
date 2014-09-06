@@ -4,7 +4,7 @@ Examples
 1. Mocha Examples
 -----------------
 
-### 1.1 Pick browser head instances and select a random on each test
+#### 1.1 Pick browser head instances and select a random on each test
 
 ```js
 	var Neck = require( 'neck' );
@@ -102,7 +102,7 @@ Examples
 
 ```
 
-### 1.2 Get filter Browser instances that match a device (iPhone on this case)
+#### 1.2 Get filter Browser instances that match a device (iPhone on this case)
 
 ```js
 	var Neck = require( 'neck' );
