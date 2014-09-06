@@ -30,11 +30,9 @@ Instalation
 
 You can connect browsers on tablets, phones, computers, virtual machines, etc.
 
-### Step 3: Run tests!!!
+### Step 3: Run tests!
 
-This is just a POC wrote to show how easy is to target a platform or app.
-
-See [API](./API.md) and [EXAMPLES](./EXAMPLES.md) for further informat
+See [API](./API.md) and [EXAMPLES](./EXAMPLES.md) for further implement information.
 
 Developing Stage
 ----------------
