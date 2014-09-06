@@ -26,9 +26,12 @@ Instalation
 	# Neck is now running on http://localhost:5000
 ```
 
-### Step 2: Connect some devices into http://neck.server.ip.address:5000
+### Step 2: Connect some devices
 
-You can connect browsers on tablets, phones, computers, virtual machines, etc.
+Access from a browser to: http://neck.server.ip.address:5000
+
+You can connect browsers running on tablets, phones, computers, virtual machines, etc.
+We expect to be compatible with all of them (even IE 6, we hope!!)
 
 ### Step 3: Run tests!
 
