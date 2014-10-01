@@ -1,5 +1,8 @@
 /**
  * @class Neck
- * returns Neck-CLI
+ * returns { Client, Server }
  */
-module.exports = require( 'neck-cli' );
+module.exports = {
+	Client: require( 'neck-client' ),
+	Server: require( 'neck-server' )
+};

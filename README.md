@@ -18,13 +18,15 @@ Instalation
 ##### Step 1: Start a Neck server
 
 ```bash
-	npm install --save neck;
-	
+	npm install -g neck;
+
 	# start Neck server
-	neck serve --port=5000;
+	neck --port=5000;
 
 	# Neck is now running on http://localhost:5000
 ```
+
+You could optionaly start a server by `require( 'neck' ).Server`
 
 ##### Step 2: Connect some devices
 
@@ -41,6 +43,14 @@ Developing Stage
 ----------------
 
 Developing our first pre-release
+
+Developing plugins for Neck
+---------------------------
+
+Neck uses [findhit-hotplug](https://github.com/findhit/findhit-hotplug) as Plugin Management System.
+If you want to develop an Head for Neck check please how we made `neck-head-browser`.
+
+Feel free to provide some Documentation for this! :)
 
 Ownership
 ---------

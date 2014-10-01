@@ -1,0 +1,34 @@
+#!/usr/bin/env node
+
+var package = require( '../package' ),
+
+	Neck = require( '../index' )
+	Yargs = require( 'yargs' ),
+
+	options;
+
+options = require( 'yargs' )
+	.usage('\n\
+Neck, a test-helper software only for Huge Minds.\n\
+This is the CLI server launcher\n\
+\n\
+Usage: neck [options]\
+')
+
+	.help('help').alias('help', 'h')
+	.version( package.version , 'version').alias('version', 'V')
+
+	.options({
+
+		'port': {
+			alias: 'p',
+			description: "<filename> Input file name",
+			default: 5000,
+			required: true
+		},
+
+	})
+	.argv;
+
+// Start a server
+Neck.Server.start( options );

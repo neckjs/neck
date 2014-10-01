@@ -25,10 +25,9 @@
     "url": "https://github.com/neckjs/neck/issues"
   },
   "dependencies": {
-    "neck-head": "^0.0.1",
-    "neck-head-browser": "^0.0.1",
+    "neck-client": "^0.0.1",
     "neck-server": "^0.0.1",
-    "neck-cli": "^0.0.1"
+    "yargs": "^1.3.1"
   },
   "devDependencies": {
     "chai": "^1.9.1",
@@ -45,8 +44,11 @@
     "findhit"
   ],
   "main": "index",
+  "bin": {
+    "neck": "bin/neck"
+  },
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha --globals setImmediate,clearImmediate --check-leaks --colors -t 10000 --reporter spec $(find tests/* -name '*.test.js')"
+    "test": "node node_modules/mocha/bin/mocha --globals setImmediate,clearImmediate --check-leaks --colors -t 10000 --reporter spec $(find test/* -name '*.test.js')"
   },
   "engines": {
     "node": ">=0.8"

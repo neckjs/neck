@@ -21,11 +21,23 @@ CLASSES
 =======
 
 * `Task` - A kind of `Promise` that delivers an **action** to an `Head`, and returns **result** to `Cli` **request**
-* `Head`
-  * `Browser` ( should detect and diverge `platform` and `browserName` )
-  * `Android` ( maybe to test default WebView? )
-  * `iOS` ( same as `Android` )
-* `Cli` - I don't have sure how to structure this yet, just some ideas, let me sleep with them...
-  * `Request`
-  * `Response`
+* `Server`
+* `Client`
 
+Working example
+===============
+
+## Server side
+* Server Initialization
+  * Heads definition
+
+* Server receives a Client
+* Client class sets up an instance
+* client instance gathers for available heads and their instances
+  * Available heads and instances data are sent to client instance
+* client instance receives a task data targeting a specific head instance
+
+  * Task class sets up an instance
+  * Head handles data from task instance and updates task state
+  * task instance syncs data with client on state change
+  
