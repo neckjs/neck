@@ -1,6 +1,3 @@
-STRUCTURE IDEAS
-===============
-
 INTERFACE
 =========
 
@@ -26,7 +23,7 @@ Since `Neck` is "only" a bridge, we want you to create the next-gen **Head**, so
 
 ### Devices
 
-You should connect multiple **Device**s to one **Head**, they belong to them! // 1:M
+You should connect multiple **Device** 's to one **Head**, they belong to them! // 1:M
 You could have Google Glass connected into it, literally!
 
 Each `Device` should have specific properties so the test developers could filter some to choose where they want to run their tests.
@@ -45,17 +42,17 @@ I won't place here all examples but, you got the idea! :)
 
 ### Windows
 
-You should connect multiple **Window**s to one **Device**, they belong to them! // 1:M
+You should connect multiple **Window** 's to one **Device**, they belong to them! // 1:M
 
 Well, sorry windows fans, this has nothing to do with Microsoft® Windows®, the best example i can get you to understand this is: a Browser! On a browser you separate environments with `window` instances, doesn't matter if they are windows, tabs or f*cking popups.
 
-This should serve to run **Task**s on a specific environment, you could do async or sync **Task**s once you prepare your environment.
+This should serve to run **Task** 's on a specific environment, you could do async or sync **Task**s once you prepare your environment.
 
 `do();`
 
 ### Tasks
 
-You should connect multiple **Task**s to one **Window**, they belong to them! // 1:M
+You should connect multiple **Task** 's to one **Window**, they belong to them! // 1:M
 
 This is the final and ultimate awesomeness of Neck. Tasks should work-a-like, or be, Promises!
 When you create a `Task` it should transport:
